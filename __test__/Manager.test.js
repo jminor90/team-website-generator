@@ -16,7 +16,7 @@ test("getRole() returns a \"Manager\" string", () => {
   expect(e.getRole()).toBe(controlVal);
 });
 
-test("getOffice() returns an \"officeNumber\" string", () => {
+test("getOfficeNumber() returns an \"officeNumber\" string", () => {
   // Arrange
   const controlVal = 202;
   const e = new Manager("Mavis", 1, "test@email.com", controlVal);
