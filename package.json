@@ -4,7 +4,7 @@
     "inquirer": "^8.2.4"
   },
   "scripts": {
-    "test": "jest --verbose test/*"
+    "test": "jest --colors --verbose test/*"
   },
   "devDependencies": {
     "jest": "^29.4.0"
