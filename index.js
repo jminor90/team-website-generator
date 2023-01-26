@@ -134,6 +134,11 @@ function init() {
 
 }
 
+/*
+Email Link <a href="mailto:${Manager.managerEmail}">${Manager.managerEmail}</a>.<br>
+Link to Github <a href="https://github.com/${Engineer.engineerGithub} target=_blank>${Engineer.engineerGithub}</a>"
+*/
+
 function managerCard(Manager) {
   const managerHTML = [
 `
@@ -142,9 +147,9 @@ function managerCard(Manager) {
   ${Manager.managerName}
 </div>
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">${Manager.managerID}</li>
-  <li class="list-group-item">${Manager.managerEmail}</li>
-  <li class="list-group-item">${Manager.managerOffice}</li>
+  <li class="list-group-item">ID: ${Manager.managerID}</li>
+  <li class="list-group-item">Email: <a href="mailto:${Manager.managerEmail}">${Manager.managerEmail}</a></li>
+  <li class="list-group-item">Office#: ${Manager.managerOffice}</li>
 </ul>
 </div>
 `
@@ -210,9 +215,9 @@ function engineerCard(Engineer) {
   ${Engineer.engineerName}
 </div>
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">${Engineer.engineerID}</li>
-  <li class="list-group-item">${Engineer.engineerEmail}</li>
-  <li class="list-group-item">${Engineer.engineerGithub}</li>
+  <li class="list-group-item">ID: ${Engineer.engineerID}</li>
+  <li class="list-group-item">Email: <a href="mailto:${Engineer.engineerEmail}">${Engineer.engineerEmail}</a></li>
+  <li class="list-group-item">GitHub: <a href="https://github.com/${Engineer.engineerGithub}" target="_blank">${Engineer.engineerGithub}</a></li>
 </ul>
 </div>
 `
@@ -244,9 +249,9 @@ function internCard(Intern) {
   ${Intern.internName}
 </div>
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">${Intern.internID}</li>
-  <li class="list-group-item">${Intern.internEmail}</li>
-  <li class="list-group-item">${Intern.internSchool}</li>
+  <li class="list-group-item">ID: ${Intern.internID}</li>
+  <li class="list-group-item">Email: <a href="mailto:${Intern.internEmail}">${Intern.internEmail}</a></li>
+  <li class="list-group-item">School: ${Intern.internSchool}</li>
 </ul>
 </div>
 `
@@ -258,7 +263,7 @@ function internCard(Intern) {
 
 function generateHTML () {
 
-  console.log(htmlArray)
+  //console.log(htmlArray)
 
   const yayHTML = 
 `
@@ -294,14 +299,6 @@ function generateHTML () {
 </html>
 `
 
-/* Must figure out how to make the array concat to string
-let finalHTML = yayHTML + htmlArray.forEach(element => {
-  
-});
-
-console.log(finalHTML)
-*/
-
 let cardHTML = ``;
 
 for (let i = 0; i < htmlArray.length; i++) {
@@ -313,16 +310,7 @@ const finalHTML = yayHTML.concat(cardHTML).concat(footHTML)
 //console.log(finalHTML);
 
 writeHTML(finalHTML)
-/*
-  fs.writeFile('index.HTML', finalHTML , (err) => {
-    if (err) {
-      throw err;
-    }
 
-    console.info("File has been written");
-    init();
-  })
-  */
 }
 
 function writeHTML(finalHTML) {
@@ -335,8 +323,8 @@ function writeHTML(finalHTML) {
       throw err;
     }
 
-    console.info("File has been written");
-    init();
+    console.info("File has been written!");
+
   })
   process.exit()
 }
