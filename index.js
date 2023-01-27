@@ -1,7 +1,7 @@
 const inquirer = require ('inquirer');
 const fs = require('fs');
 
-const Employee = require("./lib/Employee");
+//const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
@@ -97,34 +97,17 @@ const employeeArray = [];
 
 const htmlArray = [];
 
-
-/*
-Prompt Manager Questions first cause only one Manager
-Take manager answers and plug them into Manager.JS to make that class
-use the info plugged into Manager.JS to generate HTML
-
-Then Ask if next Employee is Intern, Engineer? 
-(Does Employee encompass all?)
-prompt questions for appropriate type
-Use answers for that to generate HTML in the appropriate format
-Rinse & Repeat
-
-Tool to keep track of created employees - Array
-use push method
-
-All employees will have employee class and use Extend to add on other classes (Manager, Intern, Engineer)
-*/
 function init() {
   inquirer
   .prompt(managerQuestions)
   .then(answer => {
     new Manager(answer)
-    employeeArray.push(answer)
+    //employeeArray.push(answer)
+    //console.info(employeeArray)
     managerCard(answer)
-    console.info(employeeArray)
     secondInit()
     
-  }) // Tool to keep track of created employees, then ask further questions. (array)
+  })
 
   .catch(error => {
     if(error){
@@ -134,17 +117,14 @@ function init() {
 
 }
 
-/*
-Email Link <a href="mailto:${Manager.managerEmail}">${Manager.managerEmail}</a>.<br>
-Link to Github <a href="https://github.com/${Engineer.engineerGithub} target=_blank>${Engineer.engineerGithub}</a>"
-*/
 
 function managerCard(Manager) {
   const managerHTML = [
 `
-<div class="card m-3 bg-info" style="width: 18rem;">
+<div class="card m-3 bg-primary" style="width: 18rem;">
 <div div class="card-header">
-  ${Manager.managerName}
+  <h3>${Manager.managerName}</h3>
+  <h4>Manager</h4>
 </div>
 <ul class="list-group list-group-flush">
   <li class="list-group-item">ID: ${Manager.managerID}</li>
@@ -181,10 +161,10 @@ function handleInitialChoice (  answer ) {
       break;
     
     default:
-      //console.log(answer)
+
       console.log("Good Bye!")
       generateHTML()
-      //process.exit()
+
     
     }
   
@@ -196,10 +176,10 @@ function createEngineer() {
   .prompt(engineerQuestions)
   .then(answer => {
     new Engineer(answer)
-    employeeArray.push(answer)
+    // employeeArray.push(answer)
+    // console.info(employeeArray)
 
     engineerCard(answer)
-    console.info(employeeArray)
     secondInit()
   })
     
@@ -210,9 +190,10 @@ function createEngineer() {
 function engineerCard(Engineer) {
   const engineerHTML = [
 `
-<div class="card m-3 bg-info" style="width: 18rem;">
+<div class="card m-3 bg-warning" style="width: 18rem;">
 <div div class="card-header">
-  ${Engineer.engineerName}
+  <h3>${Engineer.engineerName}</h3>
+  <h4>Engineer</h4>
 </div>
 <ul class="list-group list-group-flush">
   <li class="list-group-item">ID: ${Engineer.engineerID}</li>
@@ -232,10 +213,10 @@ function createIntern() {
   .prompt(internQuestions)
   .then(answer => {
     new Intern(answer)
-    employeeArray.push(answer)
+    // employeeArray.push(answer)
+    // console.info(employeeArray)
 
     internCard(answer)
-    console.info(employeeArray)
     secondInit()
   })
   .catch(console.error)
@@ -246,7 +227,8 @@ function internCard(Intern) {
 `
 <div class="card m-3 bg-info" style="width: 18rem;">
 <div div class="card-header">
-  ${Intern.internName}
+  <h3>${Intern.internName}</h3>
+  <h4>Intern</h4>
 </div>
 <ul class="list-group list-group-flush">
   <li class="list-group-item">ID: ${Intern.internID}</li>
@@ -279,11 +261,12 @@ function generateHTML () {
   crossorigin="anonymous">
   <title>Team Website</title>
 </head>
-<body>
+<body style="background-color: darkblue;">
+
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg bg-success">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">TEAM TIME</a>
+        <a class="navbar-brand">Here's Our Team!</a>
       </div>
     </nav>
   </div>
@@ -316,16 +299,17 @@ writeHTML(finalHTML)
 function writeHTML(finalHTML) {
   const html = finalHTML
 
-  console.log(html)
+  //console.log(html)
 
   fs.writeFileSync('index.HTML', html, (err) => {
     if (err) {
       throw err;
     }
 
-    console.info("File has been written!");
+
 
   })
+  console.info("File has been written!");
   process.exit()
 }
 
