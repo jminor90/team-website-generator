@@ -30,8 +30,13 @@ After installing node-modules run 'node index' to run the program. Follow the se
 ## Tests
 None
 
-## Credits
-Chris, Loga, Anthony F., Todd, Test Files provided by Rachel Thiim
+## Credits / Collaborators
+- [Christoph551](https://github.com/Christoph551)
+- [codeDevLogan](https://github.com/codeDevLogan)
+- [AnthonyFrederick7](https://github.com/AnthonyFrederick7)
+- [Bucket12](https://github.com/Bucket12)
+
+Test Files provided by [rxtATX](https://github.com/rxtATX)
 
 
 
